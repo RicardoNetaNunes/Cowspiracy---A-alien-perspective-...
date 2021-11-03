@@ -403,3 +403,18 @@ body {
       background-position: center center;
   
   }
+
+  .stopButton {
+    display: grid; 
+    margin: 100px; 
+    }
+  
+  #stop {
+    text-align: center;
+    margin: auto;
+    display: flex;
+    justify-content: baseline;
+    display: grid; 
+    padding: 15px;
+  
+  }

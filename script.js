@@ -8,6 +8,7 @@ gameBg.src = './Images/game_background_4.png';
 
 let startBtn = document.querySelector('#start');
 let restartBtn = document.querySelector('#restart');
+let stopBtn = document.querySelector('#stop');
 let intervalId = 0;
 let gameOver = false;
 
@@ -30,9 +31,11 @@ let isShoot = false;
 
 
 
-let audio = new Audio('./Sound/POL-night-crickets.mp3')
-let shipAudio = new Audio('./Sound/magnetic_field_1.wav')
-let splashAudio = new Audio('./Sound/impactsplat01.mp3.flac')
+let audio = new Audio('./Sound/POL-night-crickets.mp3');
+
+let shipAudio = new Audio('./Sound/flight_1.wav');
+
+let splashAudio = new Audio('./Sound/impactsplat01.mp3.flac');
 
 let cowW = new Image();
 cowW.src = './Images/whiteCow.png';
@@ -80,28 +83,22 @@ quarters.src = './Images/spaceship_quarters_bg.png 1 920×1 080 pixels.png';
 
 
 
-
-
-
-
-
- 
-
-
 let i = 0;       
 
- 
+ function drawScore (){
+    ctx.font = '50px Bold Verdana';
+    ctx.fillStyle = '#2B424E';
+    ctx.fillText(`Brown Cows: ${score} `, 504, 60);   
+ }
 
 
 function animation() {
 
     ctx.drawImage(gameBg, 0, 0)
     
+    drawScore ()
 
-
-    ctx.font = '50px Bold Verdana'
-    ctx.fillStyle = '#2B424E'
-    ctx.fillText(`Score: ${score} `, 604, 60)    
+    
     
 
    
@@ -124,24 +121,31 @@ function animation() {
             if( spaceshipX +25 >= cowsB[i].x &&  spaceshipX +25  <= cowsB[i].x + cowBHeigth &&  spaceshipY +100 + beamHeigth >= cowBY ){
                 cowsB[i].x = Math.floor(Math.random()* maxW + 1250);
                 ctx.drawImage(blood,spaceshipX +25, spaceshipY +100, 100, 150); 
-                score++  
+                score++;
+                splashAudio.play(); 
+                ctx.drawImage(blood,spaceshipX +25, spaceshipY +100, 100, 150); 
             } 
             if((spaceshipX +25) + beamWidth  > cowsB[i].x  &&  (spaceshipX +25) + beamWidth  <= cowsB[i].x + cowBWidth &&  spaceshipY +100 + beamHeigth >= cowBY ){
                 cowsB[i].x = Math.floor(Math.random()* maxW + 1250);
                 ctx.drawImage(blood,spaceshipX +25, spaceshipY +100, 100, 150); 
-                score++ 
-                
+                score++ ;
+                splashAudio.play();
+                ctx.drawImage(blood,spaceshipX +25, spaceshipY +100, 100, 150);
             } 
 
             if( spaceshipX +25 >= cowsX[i].x &&  spaceshipX +25  <= cowsX[i].x + cowWHeigth &&  spaceshipY +100 + beamHeigth >= cowWY ){
                 cowsX[i].x = 1250;
                 ctx.drawImage(blood,spaceshipX +25, spaceshipY +100, 100, 150); 
-                score--  
+                score--  ;
+                splashAudio.play();
+                ctx.drawImage(blood,spaceshipX +25, spaceshipY +100, 100, 150);
             } 
             if((spaceshipX +25) + beamWidth  > cowsX[i].x  &&  (spaceshipX +25) + beamWidth  <= cowsX[i].x + cowWWidth &&  spaceshipY +100 + beamHeigth >= cowWY ){
                 cowsX[i].x = 1250;
                 ctx.drawImage(blood,spaceshipX +25, spaceshipY +100, 100, 150); 
-                score-- 
+                score-- ;
+                splashAudio.play();
+                ctx.drawImage(blood,spaceshipX +25, spaceshipY +100, 100, 150);
                 
             } 
         }
@@ -161,15 +165,19 @@ function animation() {
     
         if (isRigth && spaceshipX + 150 < canvas.width ) {
             spaceshipX += 7;
+            shipAudio.play();
         }
         if (isLeft && spaceshipX > 0 ) {
             spaceshipX -= 7 ;
+            shipAudio.play();
         }
         if (isDown && spaceshipY + 100 < canvas.height -50 ) {
-            spaceshipY += 7 ; 
+            spaceshipY += 7 ;
+            shipAudio.play(); 
         }
         if (isUp && spaceshipY  > 0) {
            spaceshipY -= 7 ;
+           shipAudio.play();
         }
         
             
@@ -181,9 +189,7 @@ function animation() {
 
     
     if (gameOver) {
-        cancelAnimationFrame(intervalId)
-        gameOver = true;
-        ctx.drawImage(quarters,0, 0, 1249, 700)
+        handleEndGame ()
     }
     else {
         intervalId = requestAnimationFrame(animation)
@@ -200,14 +206,20 @@ function handleStart () {
     startBtn.style.display = 'none';
     canvas.style.display ='block';
     animation();
-    
-    audio.play()
-    audio.volume = 0.1
-    audio.loop()
+    audio.play();
+    audio.volume = 0.1;
+    shipAudio.volume =0.1;
+    audio.loop();
+    stopBtn.style.display = 'block';
     
 }
 
-
+function handleEndGame () {
+    drawScore ();
+    cancelAnimationFrame(intervalId);
+    gameOver = true;
+    ctx.drawImage(quarters,0, 0, 1249, 700);
+}
 
 
 
@@ -215,11 +227,15 @@ window.addEventListener('load', () => {
 
     canvas.style.display = 'none'
     restartBtn.style.display = 'none'
-
+    stopBtn.style.display = 'none'
     startBtn.addEventListener('click', () => {
     handleStart ()
 
       
+  })
+
+  stopBtn.addEventListener('click', () => {
+    handleEndGame ()
   })
 
   restartBtn.addEventListener('click', () => {
