@@ -378,7 +378,7 @@ body {
   
   .buttonStart {
     display: grid; 
-    margin: 100px; 
+    margin: 5px; 
     }
   
   #start {
@@ -428,7 +428,7 @@ body {
 
   .buttonReStart {
     display: grid; 
-    margin: 100px; 
+    margin: 50px; 
     }
   
   #restart {
@@ -440,3 +440,5 @@ body {
     padding: 15px;
   
   }
+
+  

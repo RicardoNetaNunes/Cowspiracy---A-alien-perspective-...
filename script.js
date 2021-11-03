@@ -125,13 +125,15 @@ function animation() {
                 score++;
                 splashAudio.play(); 
                 ctx.drawImage(blood,spaceshipX +25, spaceshipY +100, 100, 150); 
+                
             } 
             if((spaceshipX +25) + beamWidth  > cowsB[i].x  &&  (spaceshipX +25) + beamWidth  <= cowsB[i].x + cowBWidth &&  spaceshipY +100 + beamHeigth >= cowBY ){
                 cowsB[i].x = Math.floor(Math.random()* maxW + 1250);
                 ctx.drawImage(blood,spaceshipX +25, spaceshipY +100, 100, 150); 
                 score++ ;
                 splashAudio.play();
-                ctx.drawImage(blood,spaceshipX +25, spaceshipY +100, 100, 150);
+               ctx.drawImage(blood,spaceshipX +25, spaceshipY +100, 100, 150);
+               
             } 
 
             if( spaceshipX +25 >= cowsX[i].x &&  spaceshipX +25  <= cowsX[i].x + cowWHeigth &&  spaceshipY +100 + beamHeigth >= cowWY ){
@@ -139,7 +141,8 @@ function animation() {
                 ctx.drawImage(blood,spaceshipX +25, spaceshipY +100, 100, 150); 
                 score--  ;
                 splashAudio.play();
-                ctx.drawImage(blood,spaceshipX +25, spaceshipY +100, 100, 150);
+               ctx.drawImage(blood,spaceshipX +25, spaceshipY +100, 100, 150);
+               
             } 
             if((spaceshipX +25) + beamWidth  > cowsX[i].x  &&  (spaceshipX +25) + beamWidth  <= cowsX[i].x + cowWWidth &&  spaceshipY +100 + beamHeigth >= cowWY ){
                 cowsX[i].x = 1250;
@@ -215,7 +218,8 @@ function handleEndGame () {
     audio.pause();
     shipAudio.pause();
     splashAudio.pause();
-    restartBtn.style.display = 'block'
+    restartBtn.style.display = 'block';
+    
 }
 
 
