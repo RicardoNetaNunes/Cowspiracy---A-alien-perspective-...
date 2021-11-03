@@ -9,6 +9,7 @@ gameBg.src = './Images/game_background_4.png';
 let startBtn = document.querySelector('#start');
 let restartBtn = document.querySelector('#restart');
 let stopBtn = document.querySelector('#stop');
+let instructions = document.querySelector('p')
 let intervalId = 0;
 let gameOver = false;
 
@@ -79,7 +80,7 @@ let maxW = canvas.width - 150;
 let score = 0;
 
 let quarters = new Image();
-quarters.src = './Images/spaceship_quarters_bg.png 1 920×1 080 pixels.png';
+quarters.src = './Images/Endgame.jpg';
 
 
 
@@ -182,7 +183,9 @@ function animation() {
         
             
     
-       
+     if (score > 4) {
+        handleEndGame ()
+     } 
 
         
         
@@ -202,6 +205,20 @@ function animation() {
 
 
 
+
+
+function handleEndGame () {
+    
+    cancelAnimationFrame(intervalId);
+    gameOver = true;
+    ctx.drawImage(quarters,0, 0, 1249, 700);
+    audio.pause();
+    shipAudio.pause();
+    splashAudio.pause();
+    restartBtn.style.display = 'block'
+}
+
+
 function handleStart () {
     startBtn.style.display = 'none';
     canvas.style.display ='block';
@@ -211,15 +228,9 @@ function handleStart () {
     shipAudio.volume =0.1;
     audio.loop();
     stopBtn.style.display = 'block';
-    
+    instructions.style.displayv = 'none';
 }
 
-function handleEndGame () {
-    drawScore ();
-    cancelAnimationFrame(intervalId);
-    gameOver = true;
-    ctx.drawImage(quarters,0, 0, 1249, 700);
-}
 
 
 

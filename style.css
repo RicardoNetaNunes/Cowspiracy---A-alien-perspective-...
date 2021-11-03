@@ -418,3 +418,25 @@ body {
     padding: 15px;
   
   }
+
+  p {
+    font-size: 20px;
+      text-align: center;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      color: rgb(6, 11, 37);
+  }
+
+  .buttonReStart {
+    display: grid; 
+    margin: 100px; 
+    }
+  
+  #restart {
+    text-align: center;
+    margin: auto;
+    display: flex;
+    justify-content: baseline;
+    display: grid; 
+    padding: 15px;
+  
+  }
