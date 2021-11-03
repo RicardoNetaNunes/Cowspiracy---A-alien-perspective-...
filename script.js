@@ -18,7 +18,8 @@ let spaceshipX = 1, spaceshipY = 1;
 
 let beam = new Image();
 beam.src = './Images/laserYellow2.png'
-
+let beamHeigth = 100;
+let beamWidth = 100;
 
 let isRigth = false;
 let isLeft = false;
@@ -30,16 +31,18 @@ let isShoot = false;
 
 
 let audio = new Audio('./Sound/POL-night-crickets.mp3')
-
 let shipAudio = new Audio('./Sound/magnetic_field_1.wav')
+let splashAudio = new Audio('./Sound/impactsplat01.mp3.flac')
 
 let cowW = new Image();
-cowW.src = './Images/whiteCow.png'
+cowW.src = './Images/whiteCow.png';
 let cowWX = 1150;
+let cowWY = 595;
 
 let cowB = new Image();
 cowB.src = './Images/brownCow.png'
 let cowBX = 950;
+let cowBY = 595;
 
 let cowSpeed = 4
 let randomCowspeed = Math.random() * cowSpeed;
@@ -47,18 +50,21 @@ let randomCowspeed = Math.random() * cowSpeed;
 let cowSpeedB = 3
 let randomCowspeedB = Math.random() * cowSpeedB;
 
-
+let cowBHeigth =100;
+let cowBWidth = 100;
+let cowWHeigth = 100;
+let cowWWidth = 100;
 
 let cowsX = [
-    {x: cowWX, y: 5},
-    {x: cowWX +300, y: 5},
-    {x: cowWX +450, y: 5},
+    {x: cowWX, y: 600},
+    {x: cowWX +300, y: 600},
+    {x: cowWX +450, y: 600},
 ]
 
 let cowsB = [
-    {x: cowBX, y: 5},
-    {x: cowBX +350, y: 5},
-    {x: cowBX +550, y: 5},
+    {x: cowBX, y: 600},
+    {x: cowBX +350, y: 600},
+    {x: cowBX +550, y: 600},
 ]
 
 let blood = new Image();
@@ -72,26 +78,6 @@ let score = 0;
 let quarters = new Image();
 quarters.src = './Images/spaceship_quarters_bg.png 1 920×1 080 pixels.png';
 
-//if (shipX + shipWidth >= carX && shipX + shipWidth <= carX + carWidth)
-/* if (beam.x + beam.width >= cowsX[i].x && beam.x + beam.width <= cowsX[i].x + cowW.width){
-    score++
-}; */
-
-
-/*if( spaceshipX + spaceship.width >= cowsB[i].x && spaceshipX <= cowsB[i].x + cowB.width && (spaceshipY <= cowsB[i].y + cowB.height || spaceshipY+spaceship.height >= cowsB[i].y + cowB.height)){
-    score++
-}*/
-
-/*function collision(){
-    if (spaceship.x > cowsX[i].x + cowW.width ||
-        spaceship.x + spaceship.width < cowsX[i].x ||
-        spaceship.y > cowsX[i].y + cowW.height ||
-        spaceship.y + spaceship.height < cowsX[i].y
-        ){
-            score++  
-        } 
-   return 
-}*/
 
 
 
@@ -135,42 +121,35 @@ function animation() {
                 cowsB[i].x = 1250
             }
     
-            
+            if( spaceshipX +25 >= cowsB[i].x &&  spaceshipX +25  <= cowsB[i].x + cowBHeigth &&  spaceshipY +100 + beamHeigth >= cowBY ){
+                cowsB[i].x = Math.floor(Math.random()* maxW + 1250);
+                ctx.drawImage(blood,spaceshipX +25, spaceshipY +100, 100, 150); 
+                score++  
+            } 
+            if((spaceshipX +25) + beamWidth  > cowsB[i].x  &&  (spaceshipX +25) + beamWidth  <= cowsB[i].x + cowBWidth &&  spaceshipY +100 + beamHeigth >= cowBY ){
+                cowsB[i].x = Math.floor(Math.random()* maxW + 1250);
+                ctx.drawImage(blood,spaceshipX +25, spaceshipY +100, 100, 150); 
+                score++ 
+                
+            } 
+
+            if( spaceshipX +25 >= cowsX[i].x &&  spaceshipX +25  <= cowsX[i].x + cowWHeigth &&  spaceshipY +100 + beamHeigth >= cowWY ){
+                cowsX[i].x = 1250;
+                ctx.drawImage(blood,spaceshipX +25, spaceshipY +100, 100, 150); 
+                score--  
+            } 
+            if((spaceshipX +25) + beamWidth  > cowsX[i].x  &&  (spaceshipX +25) + beamWidth  <= cowsX[i].x + cowWWidth &&  spaceshipY +100 + beamHeigth >= cowWY ){
+                cowsX[i].x = 1250;
+                ctx.drawImage(blood,spaceshipX +25, spaceshipY +100, 100, 150); 
+                score-- 
+                
+            } 
         }
  
         ctx.drawImage(spaceship,spaceshipX,spaceshipY , 150, 101)
 
 
         ctx.drawImage(beam,spaceshipX +25,spaceshipY +100 , 100, 100 )
-
-
-
-
-        
-
-/* if (beam.y + 50 == cowsX[i].x && beam.x + 100 == cowsX[i].x + cowsX.width) {
-    ctx.drawImage(blood,Math.floor(Math.random()* maxW +0), Math.floor(Math.random()* maxH +0)); 
-}; */
-
-
-
-
-        /*if (beam.x + beam.width >= cowsX[i].x && beam.x + beam.width <= cowsX[i].x + cowW.width){
-            ctx.drawImage(blood,Math.floor(Math.random()* maxW +0), Math.floor(Math.random()* maxH +0)); 
-        }; */
-
-/*
-        if( beam.x + beam.width >= cowsB[i].x + cowB.width && beam.x <= cowsB[i].x + cowB.width && (beam.y <= cowsB[i].y + cowB.height || beam.y+beam.height >= cowsB[i].y + cowB.height)){
-            ctx.drawImage(blood,spaceshipX +25, spaceshipY +100, 100, 150); 
-            score++  
-        }   
-        if( beam.x + beam.width >= cowsX[i].x && beam.x <= cowsX[i].x + cowW.width && (beam.y <= cowsX[i].y + cowW.height || beam.y+beam.height >= cowsX[i].y + cowW.height)){
-            ctx.drawImage(blood,spaceshipX +25, spaceshipY +100, 100, 150);  
-            score++ 
-        }  */
-        
-      if(beam.y + beam.height )
-        
 
 
 
@@ -192,9 +171,7 @@ function animation() {
         if (isUp && spaceshipY  > 0) {
            spaceshipY -= 7 ;
         }
-        if (isShoot) {
-            spaceship;
-        }
+        
             
     
        
@@ -223,7 +200,7 @@ function handleStart () {
     startBtn.style.display = 'none';
     canvas.style.display ='block';
     animation();
-    //collision();
+    
     audio.play()
     audio.volume = 0.1
     audio.loop()
