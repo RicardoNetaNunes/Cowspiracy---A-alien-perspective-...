@@ -354,7 +354,7 @@ template {
 
 body {
   font-family: 'Rampart One', cursive;
-  color: #2B424E;
+  color: ivory;
   background-image: url('Images/game_background_4.png');
   background-position: center center;
   background-repeat: no-repeat;
@@ -410,7 +410,12 @@ body {
     font-size: 20px;
       text-align: center;
       font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-      color: rgb(6, 11, 37);
+      color: ivory;
+  }
+  #instructions {
+flex-direction: row;
+justify-content: center;
+align-items: flex-end;
   }
 
   .buttonReStart {
