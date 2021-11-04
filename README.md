@@ -4,35 +4,35 @@ Project's name: Cowspiracy
 
 Description
 A simple game, with the simple solution, for what they say today the cause for the greenhouse emissions. An alien solution ...
-There is a UFO that tries to smash the cows that pass left to right at the bottom of the screen. There will be a time limit, and an  Armageddon button (cancel button) to end the game.
+There is a UFO that tries to burn with the thrusters, the cows that pass left to right at the bottom of the screen. 
 
 
 MVP (DOM - CANVAS)
 . game has one spaceship that moves horizontally and vertically
 . moving cows in the bottom of the canvas (spead and randomizer)
-. spaceship smashes the cows (splash effect)
-. the game will end after (?30 sec), or the player will end it in the cancel button, in both cases with a rock shower 
+. spaceship burn the cows (splash effect)
+. the game will end after (5 brown cows), the white cows shouldn't be burned.
 
 
 Backlog
-. add scoreboard
-. back to game button
+. add rock shower
+. cancel the game button
 . add another spaceship
 . add laser
 
 
 Data structure
 
-Game () {}
-starLoop () {}
-drawCanvas () {}
-GameOver () {}
+handleStart () {}
+handleEndGame () {}
 restart () {}
-pause () {}
+function drawScore () {}
+animation() {}
 
 
-UFO.js
-UFO () { this.x; this.y; this.direction; this.size }
+
+spaceship.js
+spaceship () { this.x; this.y; this.direction; this.size }
 draw () {}
 move () {}
 checkCowCollision () {}
@@ -43,25 +43,28 @@ drawImage()
 collisionBloodSplater()
 
 
-States y States Transitions
+States and States Transitions
 Definition of the different states and their transition (transition functions)
 
 - spaceScreen /splashScreen
 - gameScreen
-- gameoverScreen
-- winScreen
+- gameoverScreen / winScreen (everibody is a winner)
+- 
 
 
-## Task
-Task definition in order of priority
+Task
+- define organic of game
+- design game dynamics
+- add graphic and sound effects
+... it should have been like this ...
 
 
-## Additional Links
+Additional Links
+----------------
 
-
-### Trello
+Trello
 [Link url](https://trello.com)
 
 
-### Slides
-[Link Slides.com](http://slides.com)
+Slides
+[https://docs.google.com/](https://docs.google.com/presentation/d/1VE9xAgjVkEWQr1dnVvdsXs_NGyPkLqq8ElTpXZS83Dw/edit?usp=sharing)
