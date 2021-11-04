@@ -1,27 +1,27 @@
-Project's name: Cowspiracy
+# Project's name: Cowspiracy
 [Link Deploy](https://github.com/RicardoNetaNunes/Cowspiracy---Alien-solution.git)
 
 
-Description
+## Description
 A simple game, with the simple solution, for what they say today the cause for the greenhouse emissions. An alien solution ...
 There is a UFO that tries to burn with the thrusters, the cows that pass left to right at the bottom of the screen. 
 
 
-MVP (DOM - CANVAS)
+## MVP (DOM - CANVAS)
 . game has one spaceship that moves horizontally and vertically
 . moving cows in the bottom of the canvas (spead and randomizer)
 . spaceship burn the cows (splash effect)
 . the game will end after (5 brown cows), the white cows shouldn't be burned.
 
 
-Backlog
+## Backlog
 . add rock shower
 . cancel the game button
 . add another spaceship
 . add laser
 
 
-Data structure
+## Data structure
 
 handleStart () {}
 handleEndGame () {}
@@ -43,7 +43,7 @@ drawImage()
 collisionBloodSplater()
 
 
-States and States Transitions
+## States and States Transitions
 Definition of the different states and their transition (transition functions)
 
 - spaceScreen /splashScreen
@@ -52,19 +52,19 @@ Definition of the different states and their transition (transition functions)
 - 
 
 
-Task
+## Task
 - define organic of game
 - design game dynamics
 - add graphic and sound effects
 ... it should have been like this ...
 
 
-Additional Links
+## Additional Links
 ----------------
 
-Trello
-[Link url](https://trello.com)
+## Trello
+next time ...
 
 
-Slides
+## Slides
 [https://docs.google.com/](https://docs.google.com/presentation/d/1VE9xAgjVkEWQr1dnVvdsXs_NGyPkLqq8ElTpXZS83Dw/edit?usp=sharing)
