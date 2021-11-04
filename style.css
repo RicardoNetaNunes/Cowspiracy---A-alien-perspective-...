@@ -391,46 +391,43 @@ body {
   
   }
 
-  canvas {
-      padding-left: 0;
-      padding-right: 0;
-      margin-left: auto;
-      margin-right: auto;
-      margin-bottom: 40px;
-      display: block;
-      width: 600px;
-      background-size: cover;
-      background-position: center center;
-  
+canvas {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+    display: block;
+    width: 600px;
+    background-size: cover;
+    background-position: center center;
   }
 
-  
-
-  p {
-    font-size: 20px;
-      text-align: center;
-      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-      color: ivory;
-  }
-  #instructions {
-flex-direction: row;
-justify-content: center;
-align-items: flex-end;
+p {
+  font-size: 20px;
+  text-align: center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: ivory;
   }
 
-  .buttonReStart {
-    display: grid; 
-    margin: 50px; 
-    }
+#instructions {
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
+  }
+
+.buttonReStart {
+  display: grid; 
+  margin: 50px; 
+  }
   
-  #restart {
-    text-align: center;
-    margin: auto;
-    display: flex;
-    justify-content: baseline;
-    display: grid; 
-    padding: 15px;
-  
+#restart {
+  text-align: center;
+  margin: auto;
+  display: flex;
+  justify-content: baseline;
+  display: grid; 
+  padding: 15px;
   }
 
   

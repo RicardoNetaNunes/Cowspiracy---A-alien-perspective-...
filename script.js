@@ -84,13 +84,13 @@ quarters.src = './Images/Endgame.jpg';
 
 
       
-
+// score 
  function drawScore (){
     ctx.font = '50px Bold Verdana';
     ctx.fillStyle = 'ivory';
     ctx.fillText(`Brown Cows: ${score} `, 504, 60);   
  }
-
+//everything about cows and collisions with them...
  function handlecows () {  
  
     for(let i=0; i<cowsX.length; i++) {
@@ -142,35 +142,35 @@ quarters.src = './Images/Endgame.jpg';
         } 
     }
 } 
-
+//controllers
 function spaceshipControl () {
     
     if (isRigth && spaceshipX + 150 < canvas.width ) {
-        spaceshipX += 7;
+        spaceshipX += 9;
         shipAudio.play();
     }
     if (isLeft && spaceshipX > 0 ) {
-        spaceshipX -= 7 ;
+        spaceshipX -= 9 ;
         shipAudio.play();
     }
     if (isDown && spaceshipY + 100 < canvas.height -50 ) {
-        spaceshipY += 7 ;
+        spaceshipY += 9 ;
         shipAudio.play(); 
     }
     if (isUp && spaceshipY  > 0) {
-       spaceshipY -= 7 ;
+       spaceshipY -= 9 ;
        shipAudio.play();
     }
     
 } 
-
+//end game condition
 function maxScore () {
     
     if (score > 4) {
        handleEndGame ()
     } 
    }
-
+//end game handler
    function ifGameOver(){
     
     if (gameOver) {
@@ -181,9 +181,13 @@ function maxScore () {
     }
 }
 
+
+//were everything happens
 function animation() {
 
-    ctx.drawImage(gameBg, 0, 0)
+    ctx.drawImage(gameBg, 0, 0);
+
+    
 
     drawScore ()
 
@@ -201,7 +205,7 @@ function animation() {
 
 }
 
-
+//self-explanatory
 function handleEndGame () {
     
     cancelAnimationFrame(intervalId);
@@ -211,13 +215,14 @@ function handleEndGame () {
     audio.pause();
     shipAudio.pause();
     splashAudio.pause();
+    splashAudio.volume = 0.4;
     restartBtn.style.display = 'block';
     endAudio.play();
-    endAudio.volume = 0.1;
+    endAudio.volume = 0.4;
     endAudio.loop();
    
 };
-
+//self-explanatory
 function restart () {
     gameOver = false;
     score = 0;
@@ -226,15 +231,15 @@ function restart () {
     spaceshipY =1;
     handleStart();
 }
-
+//self-explanatory
 function handleStart () {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     startBtn.style.display = 'none';
     canvas.style.display ='block';
     animation();
     audio.play();
-    audio.volume = 0.1;
-    shipAudio.volume =0.1;
+    audio.volume = 0.4;
+    shipAudio.volume =0.2;
     audio.loop();
     
     
